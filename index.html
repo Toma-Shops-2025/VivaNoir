@@ -61,8 +61,8 @@
         <div style="display:flex;flex-direction:column;gap:10px">
           <div class="card" style="padding:16px">
             <h3 style="margin:0 0 8px">Join early access</h3>
-            <!-- MAILCHIMP FORM START -->
-            <form action="https://gmail.us9.list-manage.com/subscribe/post?u=507638aa2da7f92c5090d4658&id=08d2914f85&f_id=00e151e1f0" method="post" target="_blank" novalidate>
+            <!-- MAILCHIMP FORM START (no target="_blank") -->
+            <form id="mc-form" action="https://gmail.us9.list-manage.com/subscribe/post?u=507638aa2da7f92c5090d4658&id=08d2914f85&f_id=00e151e1f0" method="post" novalidate>
               <label class="small">Your name (optional)</label>
               <input type="text" name="FNAME" placeholder="Your name" />
               <label class="small">Email</label>
@@ -90,13 +90,18 @@
       <p>Built by an indie creator. Questions? Reply to the email you signed up with when you join.</p>
     </footer>
   </div>
-  <!-- Optional JS redirect backup if Mailchimp redirect not used -->
+  <!-- Backup redirect: send user to thank-you after submit in case Mailchimp doesn't redirect -->
   <script>
-    document.querySelector('form').addEventListener('submit', function(e){
+    (function(){
+      const form = document.getElementById('mc-form');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        // after submit POST happens, wait then redirect
         setTimeout(function(){
-            window.location.href = "thank-you.html";
-        }, 500);
-    });
+          window.location.href = "thank-you.html";
+        }, 700);
+      });
+    })();
   </script>
 </body>
 </html>
