@@ -26,8 +26,172 @@
     .success{background:linear-gradient(90deg,#052a18,#08341f);padding:14px;border-radius:10px;color:#a7f3d0;text-align:center;display:none}
     @media(max-width:880px){.grid{grid-template-columns:1fr}.logo{width:56px;height:56px}h1{font-size:28px}}
   </style>
+  <style>
+    /* Viva Noir hero + QR styles */
+    .viva-hero {
+      padding: 5rem 1.5rem 3rem;
+      background: radial-gradient(circle at top, #101827, #020617);
+      color: #f9fafb;
+      text-align: center;
+    }
+
+    .viva-hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .viva-hero-text h1 {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+
+    .viva-tagline {
+      font-size: clamp(1.1rem, 2.1vw, 1.3rem);
+      color: #e5e7eb;
+      margin-bottom: 1.75rem;
+    }
+
+    .viva-cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .viva-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.9rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ec4899, #a855f7);
+      color: #f9fafb;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 18px 45px rgba(236, 72, 153, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .viva-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 55px rgba(236, 72, 153, 0.45);
+      opacity: 0.98;
+    }
+
+    .viva-cta-note {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      max-width: 420px;
+    }
+
+    /* QR section */
+    .viva-qr {
+      padding: 3rem 1.5rem 4rem;
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    .viva-qr-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .viva-qr-text h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .viva-qr-text p {
+      margin: 0.25rem 0;
+    }
+
+    .viva-qr-small {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .viva-qr-image-wrapper {
+      background: radial-gradient(circle at top, rgba(236, 72, 153, 0.18), transparent 55%);
+      padding: 1.1rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+    }
+
+    .viva-qr-image {
+      display: block;
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    /* Larger screens: hero/QR layout tweaks */
+    @media (min-width: 768px) {
+      .viva-hero {
+        text-align: left;
+      }
+
+      .viva-cta-row {
+        align-items: flex-start;
+      }
+
+      .viva-qr-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .viva-qr-text {
+        max-width: 520px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Viva Noir Hero Section -->
+  <section class="viva-hero">
+    <div class="viva-hero-inner">
+      <div class="viva-hero-text">
+        <h1>Meet Viva Noir.</h1>
+        <p class="viva-tagline">
+          The neon-noir AI who talks back.
+        </p>
+        <div class="viva-cta-row">
+          <a href="#chat" class="viva-btn-primary">
+            Start chatting soon
+          </a>
+          <span class="viva-cta-note">
+            Experience her first on TikTok, then come back here to talk with her.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR Code Section for TikTok viewers -->
+  <section class="viva-qr">
+    <div class="viva-qr-inner">
+      <div class="viva-qr-text">
+        <h2>Coming from TikTok?</h2>
+        <p>
+          Scan this code in the Viva Noir video or just type the URL
+          <strong>vivanoir.netlify.app</strong> into your browser.
+        </p>
+        <p class="viva-qr-small">
+          Chat access is rolling out soon. Join early so you're here when
+          Viva Noir starts talking back in real time.
+        </p>
+      </div>
+      <div class="viva-qr-image-wrapper">
+        <img src="images/vivanoir-qr.png" alt="Viva Noir QR code" class="viva-qr-image" />
+      </div>
+    </div>
+  </section>
+
   <div class="wrap">
     <header>
       <div class="logo">VN</div>
