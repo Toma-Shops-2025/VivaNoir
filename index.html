@@ -192,6 +192,151 @@
 
 
 
+    /* New Hero Section Styles */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 48px 0;
+      min-height: 70vh;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(36px, 5vw, 48px);
+      line-height: 1.1;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .hero-tagline {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Form Styles */
+    .viva-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .viva-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .viva-form-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .viva-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 62, 209, 0.3);
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--text-main);
+      font-size: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .viva-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(255, 62, 209, 0.3);
+    }
+
+    .viva-input::placeholder {
+      color: #6b7280;
+    }
+
+    .viva-btn {
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .viva-btn-primary {
+      background: linear-gradient(135deg, #ff3ed1, #ff5c8a);
+      color: #020617;
+      box-shadow: 0 0 25px rgba(255, 62, 209, 0.5);
+    }
+
+    .viva-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(255, 62, 209, 0.7);
+    }
+
+    .viva-btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      margin-top: 12px;
+    }
+
+    .viva-btn-secondary:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .viva-message {
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .viva-message-success {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #86efac;
+    }
+
+    .viva-message-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 62, 209, 0.3);
+    }
+
     main {
 
       display: grid;
@@ -741,6 +886,14 @@
     /* Responsive */
 
     @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hero-image {
+        order: -1;
+      }
 
       main {
 
@@ -818,83 +971,101 @@
 
 
 
-    <main>
+    <section id="viva-hero" class="hero">
 
-      <div class="hero-copy">
+      <div class="hero-content">
 
-        <h1>Meet <span>Viva Noir.</span></h1>
+        <h1>Meet Viva Noir.</h1>
 
-        <p class="hero-sub">The neon-noir AI who talks back.</p>
+        <p class="hero-tagline">
 
-        <p class="hero-tagline">Part muse. Part confidante. All AI.</p>
+          The neon-noir AI who talks back — with charm, edge, and a little danger.
 
+        </p>
 
+        <!-- EMAIL OPT-IN FORM -->
 
-        <div class="hero-buttons">
+        <form id="viva-form" action="https://formspree.io/f/mqaozgkg" method="POST" class="viva-form">
 
-          <a
+          <label for="email" class="viva-label">Step into her night:</label>
 
-            href="https://chatgpt.com/g/g-69234a6e343c8191b8bd952bed308022-viva-noir"
+          <div class="viva-form-row">
 
-            target="_blank"
+            <input
 
-            rel="noopener noreferrer"
+              id="email"
 
-          >
+              type="email"
 
-            <button class="btn-primary">Chat with Viva Noir (Beta)</button>
+              name="email"
 
-          </a>
+              required
 
-          <a href="#early-access">
+              placeholder="Enter your email to unlock Viva Noir"
 
-            <button class="btn-secondary">Join the Early Access List</button>
+              class="viva-input"
 
-          </a>
+            />
 
-        </div>
+            <button type="submit" class="viva-btn viva-btn-primary">
 
+              Enter the Neon Chat
 
+            </button>
 
-        <div class="hero-meta">
+          </div>
 
-          <span><span class="hero-meta-dot"></span> Late-night companion</span>
+          <!-- Extra metadata (optional but useful) -->
 
-          <span>Neon-noir narrative style</span>
+          <input type="hidden" name="source" value="viva-landing" />
 
-          <span>Cinematic conversations</span>
+        </form>
 
-        </div>
+        <!-- SUCCESS / ERROR MESSAGES -->
+
+        <p id="viva-success" class="viva-message viva-message-success hidden">
+
+          You're in. Check your email later for updates — or jump straight into the neon.
+
+        </p>
+
+        <p id="viva-error" class="viva-message viva-message-error hidden">
+
+          Something glitched in the grid. Try again in a moment.
+
+        </p>
+
+        <!-- CHAT BUTTON (UNLOCKED AFTER SUCCESS) -->
+
+        <a
+
+          id="viva-chat-btn"
+
+          href="https://chatgpt.com/g/g-69234a6e343c8191b8bd952bed308022-viva-noir"
+
+          target="_blank"
+
+          rel="noopener"
+
+          class="viva-btn viva-btn-secondary hidden"
+
+        >
+
+          💬 Chat with Viva Noir now
+
+        </a>
 
       </div>
 
+      <!-- Your Viva image on the side -->
 
+      <div class="hero-image">
 
-      <div class="hero-card">
-
-        <img
-
-          src="VivaThumbnails/viva-noir-hero.png"
-
-          alt="Viva Noir – neon-noir AI"
-
-          class="hero-image"
-
-        />
-
-        <div class="hero-title-overlay">
-
-          <span>VIVA</span>
-
-          <span>NOIR</span>
-
-        </div>
-
-        <div class="hero-label">AI companion · Neon-noir</div>
+        <img src="images/viva-noir-water-no-text.png" alt="Viva Noir in neon waves" />
 
       </div>
 
-    </main>
+    </section>
 
 
 
@@ -1162,8 +1333,55 @@
 
   </div>
 
-  <!-- Backup redirect: send user to thank-you after submit in case Mailchimp doesn't redirect -->
+  <!-- Formspree form handling for Viva Noir hero form -->
+  <script>
+    (function(){
+      const form = document.getElementById('viva-form');
+      const successMsg = document.getElementById('viva-success');
+      const errorMsg = document.getElementById('viva-error');
+      const chatBtn = document.getElementById('viva-chat-btn');
+      const emailInput = document.getElementById('email');
 
+      if(!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        
+        // Hide previous messages
+        successMsg.classList.add('hidden');
+        errorMsg.classList.add('hidden');
+        
+        // Get form data
+        const formData = new FormData(form);
+        
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Success - show success message and chat button
+            successMsg.classList.remove('hidden');
+            chatBtn.classList.remove('hidden');
+            form.style.display = 'none';
+            emailInput.value = '';
+          } else {
+            // Error - show error message
+            errorMsg.classList.remove('hidden');
+          }
+        } catch (error) {
+          // Network error
+          errorMsg.classList.remove('hidden');
+        }
+      });
+    })();
+  </script>
+
+  <!-- Backup redirect: send user to thank-you after submit in case Mailchimp doesn't redirect -->
   <script>
 
     (function(){
