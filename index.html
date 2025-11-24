@@ -194,147 +194,107 @@
 
     /* New Hero Section Styles */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      padding: 48px 0;
-      min-height: 70vh;
+      justify-content: center;
+      gap: 3rem;
+      padding: 4rem 1.5rem;
     }
 
     .hero-content {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+      max-width: 480px;
     }
 
-    .hero-content h1 {
-      font-size: clamp(36px, 5vw, 48px);
-      line-height: 1.1;
-      font-weight: 700;
-      color: var(--text-main);
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
     .hero-tagline {
-      font-size: clamp(16px, 2vw, 20px);
-      color: var(--text-muted);
-      line-height: 1.5;
+      font-size: 1.05rem;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
     }
 
     /* Form Styles */
     .viva-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 8px;
+      margin-bottom: 1rem;
     }
 
     .viva-label {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 500;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.75;
     }
 
     .viva-form-row {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
     }
 
     .viva-input {
-      flex: 1;
-      min-width: 200px;
-      padding: 12px 16px;
+      flex: 1 1 220px;
+      padding: 0.8rem 1rem;
       border-radius: 999px;
-      border: 1px solid rgba(255, 62, 209, 0.3);
-      background: rgba(15, 23, 42, 0.6);
-      color: var(--text-main);
-      font-size: 14px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .viva-input:focus {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(255, 62, 209, 0.3);
     }
 
     .viva-input::placeholder {
-      color: #6b7280;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .viva-btn {
-      padding: 12px 24px;
+      cursor: pointer;
       border-radius: 999px;
+      padding: 0.8rem 1.4rem;
       border: none;
       font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
     }
 
     .viva-btn-primary {
-      background: linear-gradient(135deg, #ff3ed1, #ff5c8a);
-      color: #020617;
-      box-shadow: 0 0 25px rgba(255, 62, 209, 0.5);
-    }
-
-    .viva-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(255, 62, 209, 0.7);
+      background: linear-gradient(120deg, #ff3cff, #00ffe7);
+      color: #070714;
     }
 
     .viva-btn-secondary {
+      display: inline-block;
+      margin-top: 0.5rem;
       background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      margin-top: 12px;
-    }
-
-    .viva-btn-secondary:hover {
-      border-color: var(--accent);
-      background: var(--accent-soft);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
     }
 
     .viva-message {
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-size: 14px;
-      margin-top: 12px;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
     }
 
     .viva-message-success {
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      color: #86efac;
+      color: #7dffcf;
     }
 
     .viva-message-error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fca5a5;
+      color: #ff7a7a;
     }
 
     .hidden {
       display: none;
     }
 
-    .hero-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .hero-image img {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(255, 62, 209, 0.3);
+      max-width: 320px;
+      border-radius: 24px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
     }
 
     main {
@@ -887,8 +847,8 @@
 
     @media (max-width: 900px) {
       .hero {
-        grid-template-columns: 1fr;
-        gap: 32px;
+        flex-direction: column;
+        gap: 2rem;
       }
 
       .hero-image {
@@ -1335,50 +1295,43 @@
 
   <!-- Formspree form handling for Viva Noir hero form -->
   <script>
-    (function(){
-      const form = document.getElementById('viva-form');
-      const successMsg = document.getElementById('viva-success');
-      const errorMsg = document.getElementById('viva-error');
-      const chatBtn = document.getElementById('viva-chat-btn');
-      const emailInput = document.getElementById('email');
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("viva-form");
+      if (!form) return;
 
-      if(!form) return;
+      const successMsg = document.getElementById("viva-success");
+      const errorMsg = document.getElementById("viva-error");
+      const chatBtn = document.getElementById("viva-chat-btn");
 
-      form.addEventListener('submit', async function(e){
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        
-        // Hide previous messages
-        successMsg.classList.add('hidden');
-        errorMsg.classList.add('hidden');
-        
-        // Get form data
+
+        // Clear old messages
+        successMsg.classList.add("hidden");
+        errorMsg.classList.add("hidden");
+
         const formData = new FormData(form);
-        
+
         try {
           const response = await fetch(form.action, {
-            method: 'POST',
+            method: "POST",
             body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
+            headers: { Accept: "application/json" },
           });
 
           if (response.ok) {
-            // Success - show success message and chat button
-            successMsg.classList.remove('hidden');
-            chatBtn.classList.remove('hidden');
-            form.style.display = 'none';
-            emailInput.value = '';
+            form.reset();
+            successMsg.classList.remove("hidden");
+            if (chatBtn) chatBtn.classList.remove("hidden");
           } else {
-            // Error - show error message
-            errorMsg.classList.remove('hidden');
+            errorMsg.classList.remove("hidden");
           }
-        } catch (error) {
-          // Network error
-          errorMsg.classList.remove('hidden');
+        } catch (err) {
+          console.error(err);
+          errorMsg.classList.remove("hidden");
         }
       });
-    })();
+    });
   </script>
 
   <!-- Backup redirect: send user to thank-you after submit in case Mailchimp doesn't redirect -->
