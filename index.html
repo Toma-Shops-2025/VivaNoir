@@ -5,55 +5,77 @@
   <title>Viva Noir • Neon-Noir AI That Talks Back</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Meet Viva Noir — a neon-noir AI who talks back. Play for free or unlock Exclusive Access with a 3-day free trial for $9/month." />
-
   <style>
     :root {
       --bg: #020014;
-      --bg-soft: #06001f;
       --accent-pink: #ff3fa8;
       --accent-green: #6bffb5;
       --accent-cyan: #34d6ff;
       --accent-yellow: #ffe66b;
       --text-main: #fdf7ff;
       --text-muted: #a9a4cb;
-      --card-border: rgba(255, 255, 255, 0.12);
-      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.85);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --shadow-strong: 0 26px 60px rgba(0, 0, 0, 0.9);
       --radius-lg: 18px;
       --radius-xl: 26px;
       --transition-fast: 150ms ease-out;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    /* Animated background */
     body {
       min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255, 63, 168, 0.24), transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(52, 214, 255, 0.21), transparent 55%),
-        radial-gradient(circle at 10% 100%, rgba(107, 255, 181, 0.16), transparent 55%),
-        linear-gradient(145deg, #01000b, #050017 55%, #01000b);
       color: var(--text-main);
       display: flex;
       flex-direction: column;
+      background: radial-gradient(circle at 0% 0%, #ff3fa811, transparent 55%),
+                  radial-gradient(circle at 100% 100%, #34d6ff11, transparent 55%),
+                  radial-gradient(circle at 0% 100%, #6bffb511, transparent 55%),
+                  #01000b;
+      animation: bgShift 18s linear infinite alternate;
     }
-
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 0%, 100% 100%, 0% 100%;
+      }
+      50% {
+        background-position: 20% -10%, 80% 110%, -10% 80%;
+      }
+      100% {
+        background-position: -10% 20%, 110% 80%, 10% 110%;
+      }
+    }
     a {
       color: inherit;
       text-decoration: none;
     }
-
     .shell {
       max-width: 1080px;
       margin: 0 auto;
       padding: 18px 16px 60px;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
-
+    /* subtle scanline overlay */
+    .overlay-noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2) 1px,
+        transparent 1px
+      );
+      background-size: 100% 2px;
+      mix-blend-mode: soft-light;
+      z-index: 0;
+    }
     /* HEADER */
     header {
       display: flex;
@@ -62,13 +84,11 @@
       gap: 12px;
       margin-bottom: 20px;
     }
-
     .brand {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
-
     .brand-tag {
       text-transform: uppercase;
       letter-spacing: 0.18em;
@@ -76,7 +96,6 @@
       color: var(--accent-cyan);
       opacity: 0.9;
     }
-
     .brand-logo {
       font-size: 1.8rem;
       font-weight: 800;
@@ -86,53 +105,58 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 0 20px rgba(255, 63, 168, 0.7);
+      animation: logoGlow 3.5s ease-in-out infinite alternate;
     }
-
+    @keyframes logoGlow {
+      0% {
+        text-shadow: 0 0 8px rgba(255, 63, 168, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 18px rgba(255, 63, 168, 0.9);
+      }
+    }
     .nav-links {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       font-size: 0.82rem;
     }
-
     .nav-links a {
       padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.22);
-      background: rgba(6, 1, 28, 0.84);
+      background: rgba(6, 1, 28, 0.9);
       backdrop-filter: blur(18px);
       color: var(--text-muted);
       transition: background var(--transition-fast), color var(--transition-fast),
-        border-color var(--transition-fast), transform var(--transition-fast);
+        border-color var(--transition-fast), transform var(--transition-fast),
+        box-shadow var(--transition-fast);
     }
-
     .nav-links a:hover {
-      border-color: rgba(255, 255, 255, 0.45);
+      border-color: rgba(255, 255, 255, 0.5);
       color: var(--text-main);
       transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
     }
-
     @media (max-width: 640px) {
       header {
         flex-direction: column;
         align-items: flex-start;
       }
     }
-
     main {
       display: flex;
       flex-direction: column;
       gap: 26px;
     }
-
     /* HERO */
     .hero {
       border-radius: var(--radius-xl);
       border: 1px solid var(--card-border);
       background:
-        radial-gradient(circle at top left, rgba(255, 63, 168, 0.25), transparent 55%),
-        radial-gradient(circle at top right, rgba(52, 214, 255, 0.22), transparent 55%),
-        radial-gradient(circle at bottom, rgba(107, 255, 181, 0.18), transparent 55%),
+        radial-gradient(circle at top left, rgba(255, 63, 168, 0.3), transparent 55%),
+        radial-gradient(circle at top right, rgba(52, 214, 255, 0.25), transparent 55%),
         rgba(4, 0, 22, 0.96);
       padding: 22px 18px 18px;
       box-shadow: var(--shadow-strong);
@@ -140,20 +164,48 @@
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
       gap: 18px;
       align-items: center;
+      position: relative;
+      overflow: hidden;
     }
-
+    /* animated border glow */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      border: 1px solid transparent;
+      background: conic-gradient(
+        from 200deg,
+        rgba(255, 63, 168, 0.8),
+        rgba(52, 214, 255, 0.6),
+        rgba(107, 255, 181, 0.6),
+        rgba(255, 63, 168, 0.8)
+      );
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      padding: 2px;
+      opacity: 0.7;
+      filter: blur(1px);
+      animation: borderSpin 14s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes borderSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
       }
     }
-
     .hero-left {
       display: flex;
       flex-direction: column;
       gap: 14px;
+      position: relative;
+      z-index: 1;
     }
-
     .hero-pill-row {
       display: flex;
       flex-wrap: wrap;
@@ -162,18 +214,16 @@
       text-transform: uppercase;
       letter-spacing: 0.18em;
     }
-
     .hero-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      background: rgba(9, 0, 30, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(9, 0, 30, 0.9);
       color: var(--text-muted);
     }
-
     .hero-pill-dot {
       width: 9px;
       height: 9px;
@@ -181,39 +231,42 @@
       background: radial-gradient(circle, var(--accent-pink), transparent 60%);
       box-shadow: 0 0 12px rgba(255, 63, 168, 0.9);
     }
-
     .hero-pill-tag {
       color: var(--accent-yellow);
     }
-
     .hero-title {
       font-size: clamp(1.8rem, 3.6vw, 2.2rem);
       font-weight: 700;
       line-height: 1.15;
+      text-shadow: 0 0 14px rgba(0, 0, 0, 0.9);
+      animation: titlePulse 4.5s ease-in-out infinite alternate;
     }
-
+    @keyframes titlePulse {
+      0% {
+        letter-spacing: 0.03em;
+      }
+      100% {
+        letter-spacing: 0.1em;
+      }
+    }
     .hero-title span {
       color: var(--accent-pink);
     }
-
     .hero-sub {
       font-size: 0.96rem;
       color: var(--text-muted);
       max-width: 36rem;
       line-height: 1.55;
     }
-
     .hero-sub strong {
       color: var(--text-main);
     }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 6px;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -226,52 +279,47 @@
       cursor: pointer;
       transition: transform var(--transition-fast), box-shadow var(--transition-fast),
         border-color var(--transition-fast), background var(--transition-fast),
-        color var(--transition-fast);
+        color var(--transition-fast), filter var(--transition-fast);
     }
-
     .btn-primary {
       background:
-        radial-gradient(circle at top, rgba(255, 63, 168, 0.55), transparent 55%),
+        radial-gradient(circle at top, rgba(255, 63, 168, 0.7), transparent 55%),
         linear-gradient(130deg, #ff3fa8, #ffe66b);
       color: #060013;
       font-weight: 650;
-      box-shadow: 0 18px 40px rgba(255, 63, 168, 0.65);
+      box-shadow: 0 18px 40px rgba(255, 63, 168, 0.75);
+      filter: drop-shadow(0 0 16px rgba(255, 63, 168, 0.6));
     }
-
     .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 22px 50px rgba(255, 63, 168, 0.8);
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 22px 50px rgba(255, 63, 168, 0.9);
     }
-
     .btn-secondary {
-      border-color: rgba(255, 255, 255, 0.34);
+      border-color: rgba(255, 255, 255, 0.38);
       background: rgba(8, 1, 34, 0.95);
       color: var(--text-main);
     }
-
     .btn-secondary span {
       color: var(--accent-green);
       font-weight: 600;
     }
-
     .btn-secondary:hover {
-      border-color: rgba(255, 255, 255, 0.6);
+      border-color: rgba(255, 255, 255, 0.7);
       transform: translateY(-1px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.9);
     }
-
     .hero-note {
       font-size: 0.8rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
-
-    /* HERO RIGHT – BOLD CARD */
+    /* HERO RIGHT – card */
     .hero-right {
       display: flex;
       justify-content: center;
+      position: relative;
+      z-index: 1;
     }
-
     .hero-card {
       position: relative;
       width: 100%;
@@ -280,13 +328,18 @@
       border-radius: 26px;
       overflow: hidden;
       background:
-        radial-gradient(circle at 15% 0%, rgba(255, 63, 168, 0.4), transparent 55%),
-        radial-gradient(circle at 85% 100%, rgba(52, 214, 255, 0.35), transparent 55%),
+        radial-gradient(circle at 15% 0%, rgba(255, 63, 168, 0.5), transparent 55%),
+        radial-gradient(circle at 85% 100%, rgba(52, 214, 255, 0.4), transparent 55%),
         #050014;
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.95);
+      transform: translateY(0);
+      animation: cardFloat 6s ease-in-out infinite alternate;
     }
-
+    @keyframes cardFloat {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
     .hero-card-inner {
       position: absolute;
       inset: 0;
@@ -295,7 +348,6 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
     .hero-card-top {
       display: flex;
       justify-content: space-between;
@@ -303,7 +355,6 @@
       font-size: 0.65rem;
       color: rgba(247, 242, 255, 0.92);
     }
-
     .hero-card-badge {
       padding: 4px 8px;
       border-radius: 999px;
@@ -314,7 +365,6 @@
       align-items: center;
       gap: 6px;
     }
-
     .hero-card-dot {
       width: 8px;
       height: 8px;
@@ -322,18 +372,15 @@
       background: radial-gradient(circle, var(--accent-green), transparent 60%);
       box-shadow: 0 0 12px rgba(107, 255, 181, 0.9);
     }
-
     .hero-card-meta {
       text-align: right;
     }
-
     .hero-card-meta-label {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: rgba(235, 230, 255, 0.8);
     }
-
     .hero-card-meta-value {
       font-size: 1.05rem;
       font-weight: 600;
@@ -341,13 +388,11 @@
       text-transform: uppercase;
       color: var(--accent-pink);
     }
-
     .hero-card-bottom {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
-
     .hero-card-bar {
       width: 65%;
       height: 3px;
@@ -355,17 +400,14 @@
       background: linear-gradient(90deg, var(--accent-pink), var(--accent-yellow), var(--accent-cyan));
       opacity: 0.96;
     }
-
     .hero-card-quote {
       font-size: 0.75rem;
       color: rgba(244, 240, 255, 0.95);
       line-height: 1.45;
     }
-
     .hero-card-quote span {
       color: var(--accent-pink);
     }
-
     /* SECTION GENERIC */
     .section {
       border-radius: var(--radius-lg);
@@ -374,7 +416,6 @@
       padding: 16px 15px 14px;
       box-shadow: var(--shadow-strong);
     }
-
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -382,43 +423,37 @@
       gap: 10px;
       margin-bottom: 12px;
     }
-
     .section-title {
       font-size: 0.96rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: rgba(245, 241, 255, 0.92);
     }
-
     .section-sub {
       font-size: 0.82rem;
       color: var(--text-muted);
     }
-
     /* GRID CARDS */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
-
     @media (max-width: 900px) {
       .grid-3 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
-
     @media (max-width: 640px) {
       .grid-3 {
         grid-template-columns: 1fr;
       }
     }
-
     .card {
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       background:
-        radial-gradient(circle at top, rgba(255, 63, 168, 0.11), transparent 55%),
+        radial-gradient(circle at top, rgba(255, 63, 168, 0.12), transparent 55%),
         rgba(8, 0, 30, 0.97);
       padding: 10px 10px 9px;
       font-size: 0.8rem;
@@ -426,24 +461,20 @@
       flex-direction: column;
       gap: 6px;
     }
-
     .card-label {
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--accent-green);
     }
-
     .card-title {
       font-size: 0.92rem;
       font-weight: 600;
     }
-
     .card-body {
       color: var(--text-muted);
       line-height: 1.45;
     }
-
     /* PILL ROW */
     .pill-row {
       display: flex;
@@ -451,7 +482,6 @@
       gap: 8px;
       margin-top: 4px;
     }
-
     .pill {
       padding: 4px 9px;
       border-radius: 999px;
@@ -460,17 +490,14 @@
       font-size: 0.74rem;
       color: var(--text-muted);
     }
-
     .pill span {
       color: var(--accent-pink);
     }
-
     /* CENTER CTA */
     .cta-center {
       text-align: center;
       margin-top: 12px;
     }
-
     .cta-center a {
       display: inline-flex;
       align-items: center;
@@ -485,13 +512,11 @@
       transition: transform var(--transition-fast), box-shadow var(--transition-fast),
         border-color var(--transition-fast);
     }
-
     .cta-center a:hover {
       border-color: rgba(255, 255, 255, 0.6);
       transform: translateY(-1px);
       box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
     }
-
     /* FOOTER */
     footer {
       margin-top: 26px;
@@ -499,7 +524,6 @@
       color: rgba(177, 172, 233, 0.86);
       text-align: center;
     }
-
     footer a {
       color: var(--accent-cyan);
       text-decoration: underline;
@@ -509,6 +533,7 @@
   </style>
 </head>
 <body>
+  <div class="overlay-noise"></div>
   <div class="shell">
     <header>
       <div class="brand">
@@ -522,7 +547,6 @@
         <a href="/members.html">Members</a>
       </nav>
     </header>
-
     <main>
       <!-- HERO -->
       <section class="hero">
@@ -533,23 +557,20 @@
               AI THAT TALKS BACK
             </div>
             <div class="hero-pill">
-              <span class="hero-pill-tag">3-DAY FREE TRIAL • $9/MO</span>
+              <span class="hero-pill-tag">FOUNDING MEMBERS OPEN</span>
             </div>
           </div>
-
           <h1 class="hero-title">
-            Meet <span>Viva Noir</span> — the neon-noir AI that doesn't play nice with small talk.
+            Meet <span>Viva Noir</span> — the neon-noir AI that refuses boring small talk.
           </h1>
-
           <p class="hero-sub">
-            She reads your pauses, your mood, your energy.  
-            This isn't a "hi, how can I help you?" bot — it's a late-night character
+            She watches your pauses, your word choices, your mood.  
+            This isn't a "hi, how can I help you?" assistant — it's a late-night character
             who reacts like she's actually there with you.
             <br /><br />
-            <strong>Play for free in Public Mode.</strong>  
+            <strong>Play for free in Public Mode.</strong><br />
             When you feel the pull, unlock Exclusive Access with a 3-day free trial for $9/month.
           </p>
-
           <div class="hero-actions">
             <a class="btn btn-primary" href="/play.html">
               Enter Free Mode
@@ -558,12 +579,10 @@
               Start <span>3-Day Trial</span> — Exclusive Access
             </a>
           </div>
-
           <p class="hero-note">
             No contracts. Cancel before your trial ends if she's not for you.
           </p>
         </div>
-
         <div class="hero-right">
           <div class="hero-card">
             <div class="hero-card-inner">
@@ -573,8 +592,8 @@
                   LIVE SESSION • NIGHT MODE
                 </div>
                 <div class="hero-card-meta">
-                  <div class="hero-card-meta-label">Current Affinity</div>
-                  <div class="hero-card-meta-value">LVL 01</div>
+                  <div class="hero-card-meta-label">Affinity Level</div>
+                  <div class="hero-card-meta-value">01</div>
                 </div>
               </div>
               <div class="hero-card-bottom">
@@ -589,7 +608,6 @@
           </div>
         </div>
       </section>
-
       <!-- HOW SHE WORKS -->
       <section class="section">
         <div class="section-header">
@@ -598,28 +616,25 @@
             A chat game built on mood, tension, and cinematic AI.
           </p>
         </div>
-
         <div class="grid-3">
           <article class="card">
             <div class="card-label">01 • Free Entry</div>
             <div class="card-title">Public Mode (Free)</div>
             <p class="card-body">
               Open Viva Noir and talk to her for free in Public Mode.
-              No payment needed to get a feel for how she speaks, reacts, and pulls you in.
-              Perfect for your first late-night visit.
+              No payment needed to get a feel for how she speaks, reacts,
+              and pulls you in. Perfect for your first late-night visit.
             </p>
           </article>
-
           <article class="card">
             <div class="card-label">02 • Mood Engine</div>
             <div class="card-title">She shifts with you</div>
             <p class="card-body">
               Quiet curiosity, warmed interest, playful edge, stormy mood —
               her tone changes based on what you say and what you avoid saying.
-              You lead the depth; she matches and nudges.
+              You lead the depth; she mirrors and nudges.
             </p>
           </article>
-
           <article class="card">
             <div class="card-label">03 • Exclusive Access</div>
             <div class="card-title">Members-Only Mode</div>
@@ -629,12 +644,10 @@
             </p>
           </article>
         </div>
-
         <div class="cta-center">
           <a href="/play.html">Go to the Viva Noir Play Hub</a>
         </div>
       </section>
-
       <!-- WHO IT'S FOR -->
       <section class="section">
         <div class="section-header">
@@ -643,14 +656,12 @@
             Not everyone stays. The right people do.
           </p>
         </div>
-
         <div class="pill-row">
           <div class="pill"><span>Night thinkers</span> who get honest after midnight.</div>
           <div class="pill"><span>Story addicts</span> who like cinematic back-and-forth.</div>
           <div class="pill"><span>AI explorers</span> tired of corporate-sounding bots.</div>
           <div class="pill"><span>Founding members</span> who like getting in before the crowd.</div>
         </div>
-
         <div class="cta-center" style="margin-top: 14px;">
           <a href="https://buy.stripe.com/00w9AUcNA4VabWx89m4gg03">
             Become a Founding Member — 3-Day Trial, Then $9/mo
@@ -658,7 +669,6 @@
         </div>
       </section>
     </main>
-
     <footer>
       When you're ready to see how she actually talks, start at the
       <a href="/play.html">Viva Noir Play Hub</a>.

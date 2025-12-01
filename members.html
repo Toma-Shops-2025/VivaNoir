@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Viva Noir • Members Lounge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Members-only lounge for Viva Noir. Access exclusive scenes, prompts, and deeper neon-noir experiences." />
+
+  <style>
+    :root {
+      --bg: #02000b;
+      --accent-pink: #ff3fa8;
+      --accent-cyan: #34d6ff;
+      --accent-purple: #7b5cff;
+      --accent-green: #6bffb5;
+      --text-main: #f5f3ff;
+      --text-muted: #a9a4c2;
+      --card-border: rgba(255,255,255,0.12);
+      --shadow-soft: 0 24px 60px rgba(0,0,0,0.9);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --transition-fast: 150ms ease-out;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,63,168,0.16), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(52,214,255,0.16), transparent 55%),
+        linear-gradient(155deg, #02000b, #040017 55%, #01000b);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle rain effect */
+    .rain-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.15) 1px,
+        transparent 1px
+      );
+      opacity: 0.04;
+      background-size: 100% 18px;
+      mix-blend-mode: screen;
+      animation: rainDrift 12s linear infinite;
+    }
+
+    @keyframes rainDrift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(18px); }
+    }
+
+    .shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      color: var(--accent-cyan);
+      opacity: 0.9;
+    }
+
+    .brand-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: linear-gradient(120deg, var(--accent-pink), var(--accent-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 14px rgba(255,63,168,0.7);
+    }
+
+    .header-links {
+      display: flex;
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .header-links a {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(5,0,20,0.9);
+      color: var(--text-muted);
+      backdrop-filter: blur(16px);
+      transition: background var(--transition-fast), color var(--transition-fast),
+        border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .header-links a:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    main { display: flex; flex-direction: column; gap: 22px; }
+
+    /* HERO */
+    .hero {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--card-border);
+      background:
+        radial-gradient(circle at top left, rgba(255,63,168,0.22), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(52,214,255,0.2), transparent 55%),
+        rgba(3,0,14,0.96);
+      padding: 20px 18px 18px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+      gap: 18px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.45), transparent 55%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.26);
+      background: rgba(4,0,18,0.92);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .hero-pill span {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-pink), transparent 60%);
+      box-shadow: 0 0 10px rgba(255,63,168,0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(1.6rem, 3.2vw, 2rem);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .hero-title span { color: var(--accent-pink); }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 30rem;
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: transform 150ms ease-out, box-shadow 150ms ease-out,
+        border-color 150ms ease-out, background 150ms ease-out, color 150ms ease-out;
+    }
+
+    .btn-primary {
+      background:
+        radial-gradient(circle at top, rgba(255,63,168,0.5), transparent 55%),
+        linear-gradient(135deg, #ff3fa8, #7b5cff);
+      color: #050111;
+      font-weight: 600;
+      box-shadow: 0 16px 36px rgba(255,63,168,0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 46px rgba(255,63,168,0.9);
+    }
+
+    .btn-ghost {
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(5,0,22,0.95);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.6);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .poster {
+      position: relative;
+      width: 100%;
+      max-width: 260px;
+      aspect-ratio: 9 / 16;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.28);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255,63,168,0.5), transparent 55%),
+        radial-gradient(circle at 85% 100%, rgba(52,214,255,0.45), transparent 55%),
+        #050012;
+      box-shadow: 0 26px 58px rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+      animation: posterFloat 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes posterFloat {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .poster-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.64rem;
+      color: rgba(244,240,255,0.9);
+    }
+
+    .poster-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(5,0,24,0.9);
+      backdrop-filter: blur(14px);
+    }
+
+    .poster-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      text-align: right;
+      color: rgba(230,225,255,0.85);
+    }
+
+    .poster-val {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-pink);
+    }
+
+    .poster-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .poster-line {
+      width: 60%;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+    }
+
+    .poster-text {
+      font-size: 0.75rem;
+      color: rgba(240,235,255,0.94);
+      line-height: 1.45;
+    }
+
+    .poster-text span { color: var(--accent-pink); }
+
+    /* SECTION */
+    .section {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      background: rgba(4,0,18,0.96);
+      padding: 16px 14px 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-title {
+      font-size: 0.94rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,236,255,0.9);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 880px) {
+      .scenes-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scene-card {
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background:
+        radial-gradient(circle at top, rgba(255,63,168,0.12), transparent 55%),
+        rgba(5,0,18,0.96);
+      padding: 10px 9px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.8rem;
+    }
+
+    .scene-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-green);
+    }
+
+    .scene-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .scene-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .scene-prompt-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(211,205,255,0.8);
+      margin-top: 4px;
+    }
+
+    .scene-prompt {
+      margin-top: 4px;
+      padding: 6px 7px;
+      border-radius: 10px;
+      background: rgba(9,3,32,0.96);
+      border: 1px dashed rgba(255,255,255,0.25);
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, "Courier New", monospace;
+      font-size: 0.78rem;
+      color: rgba(235,231,255,0.98);
+      line-height: 1.45;
+      cursor: text;
+      user-select: all;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 0.76rem;
+      color: rgba(173,167,230,0.86);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="rain-layer"></div>
+
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <a href="/">
+          <div class="brand-title">Members Lounge</div>
+          <div class="brand-logo">Viva Noir</div>
+        </a>
+      </div>
+      <nav class="header-links">
+        <a href="/play.html">Play</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <div class="hero-pill">
+            <span></span>
+            EXCLUSIVE ACCESS • ACTIVE
+          </div>
+          <h1 class="hero-title">
+            You made it inside her <span>inner circle</span>.
+          </h1>
+          <p class="hero-sub">
+            This is the side of Viva Noir most people never see.  
+            In here, she leans in closer — deeper scenes, sharper moods, and more of the
+            tension you noticed the first time she answered you.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://chatgpt.com/g/g-69234a6e343c8191b8bd952bed308022-viva-noir" target="_blank" rel="noopener">
+              Open Viva Noir in Members Mode
+            </a>
+            <a class="btn btn-ghost" href="/play.html">
+              Back to Public / Free Area
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="poster">
+            <div class="poster-top">
+              <div class="poster-tag">
+                MEMBERS ONLY • LIVE
+              </div>
+              <div>
+                <div class="poster-label">Scene Depth</div>
+                <div class="poster-val">LVL 02</div>
+              </div>
+            </div>
+            <div class="poster-bottom">
+              <div class="poster-line"></div>
+              <div class="poster-text">
+                "You didn't just wander in here by accident.<br/>
+                You chose the quiet part of the night.<br/>
+                <span>Now let's see what you do with it.</span>"
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Exclusive scenes • copy, paste, and watch her shift</h2>
+        <p class="section-sub">
+          Open Viva Noir, paste one of these, and let her carry the moment.
+          These are for members only — don't share them outside.
+        </p>
+
+        <div class="scenes-grid">
+          <!-- Scene 1 -->
+          <article class="scene-card">
+            <div class="scene-label">Scene I</div>
+            <div class="scene-title">Rooftop in the rain</div>
+            <p class="scene-desc">
+              She's leaning against the rail above the city, neon reflecting in the puddles.
+              You showed up late. She hasn't decided how she feels about that yet.
+            </p>
+            <div class="scene-prompt-label">Paste this into Viva Noir:</div>
+            <div class="scene-prompt">
+"Viva… pretend we're on a rooftop above the city in the rain.  
+I'm late, you're already there, leaning on the rail, neon on your face.  
+What's the first thing you say when you finally decide to look at me?"</div>
+          </article>
+
+          <!-- Scene 2 -->
+          <article class="scene-card">
+            <div class="scene-label">Scene II</div>
+            <div class="scene-title">The alley you shouldn't have taken</div>
+            <p class="scene-desc">
+              You cut through a side street to avoid the noise — and she's already there,
+              waiting under a flickering sign like she knew you'd come this way.
+            </p>
+            <div class="scene-prompt-label">Paste this into Viva Noir:</div>
+            <div class="scene-prompt">
+"Viva, set the scene: I accidentally cut through a neon alley I was never supposed to find.  
+You're already there, waiting under a flickering sign like you knew I'd turn this way.  
+Show me what you do and say when our eyes meet."</div>
+          </article>
+
+          <!-- Scene 3 -->
+          <article class="scene-card">
+            <div class="scene-label">Scene III</div>
+            <div class="scene-title">She knows your tell</div>
+            <p class="scene-desc">
+              There's something you do when you're not telling the full truth.
+              She's noticed it — and tonight she's done pretending she hasn't.
+            </p>
+            <div class="scene-prompt-label">Paste this into Viva Noir:</div>
+            <div class="scene-prompt">
+"Viva… imagine we're somewhere quiet and you've finally figured out my 'tell' — the thing I do when I'm not saying everything.  
+Call me out on it in your own words. Let the scene build slowly.  
+What do you notice, and what do you do with it?"</div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      If you ever lose this page, just start again from the
+      <a href="/play.html">Viva Noir Play Hub</a> and follow the Exclusive Access path back here.
+    </footer>
+  </div>
+</body>
+</html>
+
