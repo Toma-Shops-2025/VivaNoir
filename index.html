@@ -1,1384 +1,668 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
-  <title>Viva Noir – The neon-noir AI who talks back</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta
-
-    name="description"
-
-    content="Meet Viva Noir, the neon-noir AI who talks back. A cinematic AI companion for late-night thinkers, writers, and dreamers."
-
-  />
-
-  <link rel="icon" type="image/png" href="public/favicon-32x32.png" />
+  <title>Viva Noir • Neon-Noir AI That Talks Back</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Meet Viva Noir — a neon-noir AI who talks back. Play for free or unlock Exclusive Access with a 3-day free trial for $9/month." />
 
   <style>
-
     :root {
-
-      --bg: #020818;
-
-      --bg-alt: #050b1f;
-
-      --accent: #ff3ed1;
-
-      --accent-soft: rgba(255, 62, 209, 0.16);
-
-      --text-main: #f9fafb;
-
-      --text-muted: #9ca3af;
-
-      --border-subtle: rgba(255, 255, 255, 0.08);
-
+      --bg: #020014;
+      --bg-soft: #06001f;
+      --accent-pink: #ff3fa8;
+      --accent-green: #6bffb5;
+      --accent-cyan: #34d6ff;
+      --accent-yellow: #ffe66b;
+      --text-main: #fdf7ff;
+      --text-muted: #a9a4cb;
+      --card-border: rgba(255, 255, 255, 0.12);
+      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.85);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --transition-fast: 150ms ease-out;
     }
-
-
 
     * {
-
-      box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
+      box-sizing: border-box;
     }
-
-
 
     body {
-
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-
-        "Segoe UI", sans-serif;
-
-      background: radial-gradient(circle at top, #11233e 0, #020818 55%, #000 100%);
-
-      color: var(--text-main);
-
       min-height: 100vh;
-
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 63, 168, 0.24), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(52, 214, 255, 0.21), transparent 55%),
+        radial-gradient(circle at 10% 100%, rgba(107, 255, 181, 0.16), transparent 55%),
+        linear-gradient(145deg, #01000b, #050017 55%, #01000b);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
     }
-
-
 
     a {
-
       color: inherit;
-
       text-decoration: none;
-
     }
 
-
-
-    .page {
-
-      max-width: 1120px;
-
+    .shell {
+      max-width: 1080px;
       margin: 0 auto;
-
-      padding: 24px 16px 64px;
-
+      padding: 18px 16px 60px;
+      width: 100%;
     }
 
-
-
+    /* HEADER */
     header {
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
-      margin-bottom: 32px;
-
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
-
-
-    .logo {
-
+    .brand {
       display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
+      flex-direction: column;
+      gap: 2px;
     }
 
-
-
-    .logo-mark {
-
-      width: 32px;
-
-      height: 32px;
-
-      border-radius: 999px;
-
-      background: radial-gradient(circle at 30% 0, #ffffff 0, #ff3ed1 40%, #111827 100%);
-
-      box-shadow: 0 0 22px rgba(255, 62, 209, 0.6);
-
-    }
-
-
-
-    .logo-text {
-
-      font-size: 18px;
-
+    .brand-tag {
+      text-transform: uppercase;
       letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      font-weight: 600;
-
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      opacity: 0.9;
     }
 
-
-
-    .badge {
-
-      padding: 4px 10px;
-
-      border-radius: 999px;
-
-      border: 1px solid var(--border-subtle);
-
-      font-size: 11px;
-
-      text-transform: uppercase;
-
+    .brand-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
       letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: linear-gradient(120deg, #ff3fa8, #ffe66b, #34d6ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .nav-links a {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(6, 1, 28, 0.84);
+      backdrop-filter: blur(18px);
       color: var(--text-muted);
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      background: rgba(15, 23, 42, 0.7);
-
-      backdrop-filter: blur(10px);
-
+      transition: background var(--transition-fast), color var(--transition-fast),
+        border-color var(--transition-fast), transform var(--transition-fast);
     }
 
-
-
-    .badge-dot {
-
-      width: 6px;
-
-      height: 6px;
-
-      border-radius: 999px;
-
-      background: #22c55e;
-
-      box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
-
+    .nav-links a:hover {
+      border-color: rgba(255, 255, 255, 0.45);
+      color: var(--text-main);
+      transform: translateY(-1px);
     }
 
-
-
-    /* New Hero Section Styles */
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-      padding: 4rem 1.5rem;
-    }
-
-    .hero-content {
-      max-width: 480px;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-tagline {
-      font-size: 1.05rem;
-      opacity: 0.85;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Form Styles */
-    .viva-form {
-      margin-bottom: 1rem;
-    }
-
-    .viva-label {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      opacity: 0.75;
-    }
-
-    .viva-form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 0.5rem;
-    }
-
-    .viva-input {
-      flex: 1 1 220px;
-      padding: 0.8rem 1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(0, 0, 0, 0.4);
-      color: #fff;
-      outline: none;
-    }
-
-    .viva-input::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .viva-btn {
-      cursor: pointer;
-      border-radius: 999px;
-      padding: 0.8rem 1.4rem;
-      border: none;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-
-    .viva-btn-primary {
-      background: linear-gradient(120deg, #ff3cff, #00ffe7);
-      color: #070714;
-    }
-
-    .viva-btn-secondary {
-      display: inline-block;
-      margin-top: 0.5rem;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      color: #fff;
-    }
-
-    .viva-message {
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-
-    .viva-message-success {
-      color: #7dffcf;
-    }
-
-    .viva-message-error {
-      color: #ff7a7a;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .hero-image img {
-      max-width: 320px;
-      border-radius: 24px;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     main {
-
-      display: grid;
-
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-
-      gap: 32px;
-
-      align-items: center;
-
-    }
-
-
-
-    .hero-copy h1 {
-
-      font-size: clamp(32px, 4vw, 40px);
-
-      line-height: 1.1;
-
-      margin-bottom: 10px;
-
-    }
-
-
-
-    .hero-copy h1 span {
-
-      color: var(--accent);
-
-    }
-
-
-
-    .hero-sub {
-
-      font-size: 18px;
-
-      font-weight: 500;
-
-      margin-bottom: 8px;
-
-    }
-
-
-
-    .hero-tagline {
-
-      font-size: 14px;
-
-      color: var(--text-muted);
-
-      margin-bottom: 20px;
-
-    }
-
-
-
-    .hero-buttons {
-
       display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 10px;
-
-      margin-bottom: 20px;
-
+      flex-direction: column;
+      gap: 26px;
     }
 
-
-
-    .btn-primary {
-
-      padding: 10px 18px;
-
-      border-radius: 999px;
-
-      background: linear-gradient(135deg, #ff3ed1, #ff5c8a);
-
-      border: none;
-
-      font-weight: 600;
-
-      font-size: 14px;
-
-      color: #020617;
-
-      box-shadow: 0 0 25px rgba(255, 62, 209, 0.7);
-
-      cursor: pointer;
-
-    }
-
-
-
-    .btn-secondary {
-
-      padding: 10px 18px;
-
-      border-radius: 999px;
-
-      background: transparent;
-
-      border: 1px solid var(--border-subtle);
-
-      font-weight: 500;
-
-      font-size: 14px;
-
-      color: var(--text-main);
-
-      cursor: pointer;
-
-    }
-
-
-
-    .hero-meta {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 14px;
-
-      font-size: 12px;
-
-      color: var(--text-muted);
-
-    }
-
-
-
-    .hero-meta span {
-
-      display: inline-flex;
-
+    /* HERO */
+    .hero {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--card-border);
+      background:
+        radial-gradient(circle at top left, rgba(255, 63, 168, 0.25), transparent 55%),
+        radial-gradient(circle at top right, rgba(52, 214, 255, 0.22), transparent 55%),
+        radial-gradient(circle at bottom, rgba(107, 255, 181, 0.18), transparent 55%),
+        rgba(4, 0, 22, 0.96);
+      padding: 22px 18px 18px;
+      box-shadow: var(--shadow-strong);
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 18px;
       align-items: center;
-
-      gap: 6px;
-
     }
-
-
-
-    .hero-meta-dot {
-
-      width: 6px;
-
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: var(--accent);
-
-      box-shadow: 0 0 10px rgba(255, 62, 209, 0.9);
-
-    }
-
-
-
-    .hero-card {
-
-      position: relative;
-
-      border-radius: 26px;
-
-      overflow: hidden;
-
-      border: 1px solid var(--border-subtle);
-
-      background: radial-gradient(circle at top, #0b1120 0, #020617 60%, #000 100%);
-
-      box-shadow:
-
-        0 0 40px rgba(15, 23, 42, 0.9),
-
-        0 0 60px rgba(255, 62, 209, 0.4);
-
-    }
-
-
-
-    .hero-image {
-
-      width: 100%;
-
-      display: block;
-
-      object-fit: cover;
-
-      max-height: 520px;
-
-    }
-
-
-
-    .hero-label {
-
-      position: absolute;
-
-      left: 18px;
-
-      bottom: 18px;
-
-      padding: 6px 12px;
-
-      border-radius: 999px;
-
-      background: rgba(15, 23, 42, 0.7);
-
-      backdrop-filter: blur(8px);
-
-      font-size: 11px;
-
-      letter-spacing: 0.16em;
-
-      text-transform: uppercase;
-
-      border: 1px solid var(--border-subtle);
-
-    }
-
-
-
-    .hero-title-overlay {
-
-      position: absolute;
-
-      top: 14px;
-
-      right: 16px;
-
-      text-align: right;
-
-    }
-
-
-
-    .hero-title-overlay span {
-
-      display: block;
-
-      font-size: 26px;
-
-      line-height: 0.95;
-
-      letter-spacing: 0.16em;
-
-      text-transform: uppercase;
-
-      font-weight: 700;
-
-      color: var(--accent);
-
-      text-shadow:
-
-        0 0 12px rgba(255, 62, 209, 0.7),
-
-        0 0 30px rgba(59, 130, 246, 0.4);
-
-    }
-
-
-
-    section {
-
-      margin-top: 56px;
-
-    }
-
-
-
-    section h2 {
-
-      font-size: 22px;
-
-      margin-bottom: 10px;
-
-    }
-
-
-
-    section p {
-
-      color: var(--text-muted);
-
-      font-size: 14px;
-
-      line-height: 1.6;
-
-    }
-
-
-
-    .three-col {
-
-      display: grid;
-
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-
-      gap: 16px;
-
-      margin-top: 18px;
-
-    }
-
-
-
-    .card {
-
-      padding: 16px 14px;
-
-      border-radius: 16px;
-
-      background: rgba(15, 23, 42, 0.8);
-
-      border: 1px solid var(--border-subtle);
-
-      box-shadow: 0 0 16px rgba(15, 23, 42, 0.7);
-
-    }
-
-
-
-    .card h3 {
-
-      font-size: 15px;
-
-      margin-bottom: 6px;
-
-    }
-
-
-
-    .card p {
-
-      font-size: 13px;
-
-    }
-
-
-
-    .steps {
-
-      display: grid;
-
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-
-      gap: 14px;
-
-      margin-top: 18px;
-
-    }
-
-
-
-    .step-number {
-
-      width: 24px;
-
-      height: 24px;
-
-      border-radius: 999px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 12px;
-
-      margin-bottom: 8px;
-
-      background: var(--accent-soft);
-
-      border: 1px solid rgba(255, 62, 209, 0.5);
-
-    }
-
-
-
-    .prompts-list {
-
-      margin-top: 10px;
-
-      padding-left: 18px;
-
-      color: var(--text-muted);
-
-      font-size: 14px;
-
-    }
-
-
-
-    .prompts-list li {
-
-      margin-bottom: 6px;
-
-    }
-
-
-
-    .cta-box {
-
-      margin-top: 18px;
-
-      padding: 18px 16px;
-
-      border-radius: 18px;
-
-      border: 1px dashed rgba(255, 62, 209, 0.5);
-
-      background: radial-gradient(circle at top, var(--accent-soft), transparent 65%);
-
-      font-size: 13px;
-
-      color: var(--text-muted);
-
-    }
-
-
-
-    .form-wrapper {
-
-      margin-top: 18px;
-
-      padding: 18px 16px;
-
-      border-radius: 18px;
-
-      background: rgba(15, 23, 42, 0.9);
-
-      border: 1px solid var(--border-subtle);
-
-      max-width: 480px;
-
-    }
-
-
-
-    .form-grid {
-
-      display: grid;
-
-      gap: 12px;
-
-    }
-
-
-
-    label {
-
-      font-size: 13px;
-
-      margin-bottom: 4px;
-
-      display: block;
-
-    }
-
-
-
-    input[type="text"],
-
-    input[type="email"] {
-
-      width: 100%;
-
-      padding: 9px 10px;
-
-      border-radius: 999px;
-
-      border: 1px solid rgba(148, 163, 184, 0.6);
-
-      background: #020617;
-
-      color: var(--text-main);
-
-      font-size: 13px;
-
-    }
-
-
-
-    input::placeholder {
-
-      color: #6b7280;
-
-    }
-
-
-
-    .btn-submit {
-
-      margin-top: 8px;
-
-      padding: 10px 16px;
-
-      border-radius: 999px;
-
-      border: none;
-
-      background: linear-gradient(135deg, #ff3ed1, #ff5c8a);
-
-      color: #020617;
-
-      font-weight: 600;
-
-      font-size: 14px;
-
-      cursor: pointer;
-
-      width: 100%;
-
-    }
-
-
-
-    footer {
-
-      margin-top: 48px;
-
-      padding-top: 16px;
-
-      border-top: 1px solid var(--border-subtle);
-
-      font-size: 11px;
-
-      color: var(--text-muted);
-
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 8px;
-
-      flex-wrap: wrap;
-
-    }
-
-
-
-    /* Responsive */
 
     @media (max-width: 900px) {
       .hero {
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .hero-image {
-        order: -1;
-      }
-
-      main {
-
         grid-template-columns: 1fr;
-
       }
-
-      .hero-card {
-
-        order: -1;
-
-      }
-
     }
 
-
-
-    @media (max-width: 700px) {
-
-      .page {
-
-        padding-inline: 14px;
-
-      }
-
-      header {
-
-        margin-bottom: 24px;
-
-      }
-
-      section {
-
-        margin-top: 40px;
-
-      }
-
-      .three-col,
-
-      .steps {
-
-        grid-template-columns: 1fr;
-
-      }
-
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(9, 0, 30, 0.92);
+      color: var(--text-muted);
+    }
+
+    .hero-pill-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-pink), transparent 60%);
+      box-shadow: 0 0 12px rgba(255, 63, 168, 0.9);
+    }
+
+    .hero-pill-tag {
+      color: var(--accent-yellow);
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 3.6vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      color: var(--accent-pink);
+    }
+
+    .hero-sub {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+      line-height: 1.55;
+    }
+
+    .hero-sub strong {
+      color: var(--text-main);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background:
+        radial-gradient(circle at top, rgba(255, 63, 168, 0.55), transparent 55%),
+        linear-gradient(130deg, #ff3fa8, #ffe66b);
+      color: #060013;
+      font-weight: 650;
+      box-shadow: 0 18px 40px rgba(255, 63, 168, 0.65);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(255, 63, 168, 0.8);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.34);
+      background: rgba(8, 1, 34, 0.95);
+      color: var(--text-main);
+    }
+
+    .btn-secondary span {
+      color: var(--accent-green);
+      font-weight: 600;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* HERO RIGHT – BOLD CARD */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 9 / 16;
+      border-radius: 26px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255, 63, 168, 0.4), transparent 55%),
+        radial-gradient(circle at 85% 100%, rgba(52, 214, 255, 0.35), transparent 55%),
+        #050014;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-card-inner {
+      position: absolute;
+      inset: 0;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: 0.65rem;
+      color: rgba(247, 242, 255, 0.92);
+    }
+
+    .hero-card-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      background: rgba(5, 0, 24, 0.9);
+      backdrop-filter: blur(16px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-green), transparent 60%);
+      box-shadow: 0 0 12px rgba(107, 255, 181, 0.9);
+    }
+
+    .hero-card-meta {
+      text-align: right;
+    }
+
+    .hero-card-meta-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(235, 230, 255, 0.8);
+    }
+
+    .hero-card-meta-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-pink);
+    }
+
+    .hero-card-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-card-bar {
+      width: 65%;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-pink), var(--accent-yellow), var(--accent-cyan));
+      opacity: 0.96;
+    }
+
+    .hero-card-quote {
+      font-size: 0.75rem;
+      color: rgba(244, 240, 255, 0.95);
+      line-height: 1.45;
+    }
+
+    .hero-card-quote span {
+      color: var(--accent-pink);
+    }
+
+    /* SECTION GENERIC */
+    .section {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      background: rgba(5, 0, 22, 0.96);
+      padding: 16px 15px 14px;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 0.96rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 241, 255, 0.92);
+    }
+
+    .section-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* GRID CARDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background:
+        radial-gradient(circle at top, rgba(255, 63, 168, 0.11), transparent 55%),
+        rgba(8, 0, 30, 0.97);
+      padding: 10px 10px 9px;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-green);
+    }
+
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .card-body {
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* PILL ROW */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(9, 1, 32, 0.93);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .pill span {
+      color: var(--accent-pink);
+    }
+
+    /* CENTER CTA */
+    .cta-center {
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .cta-center a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      background: rgba(8, 0, 30, 0.96);
+      font-size: 0.86rem;
+      color: var(--text-main);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .cta-center a:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 26px;
+      font-size: 0.78rem;
+      color: rgba(177, 172, 233, 0.86);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
   </style>
-
 </head>
-
 <body>
-
-  <div class="page">
-
+  <div class="shell">
     <header>
-
-      <div class="logo">
-
-        <div class="logo-mark"></div>
-
-        <div class="logo-text">Viva Noir</div>
-
+      <div class="brand">
+        <a href="/">
+          <div class="brand-tag">Neon Noir AI Experience</div>
+          <div class="brand-logo">Viva Noir</div>
+        </a>
       </div>
-
-      <div class="badge">
-
-        <span class="badge-dot"></span>
-
-        <span>Beta access</span>
-
-      </div>
-
+      <nav class="nav-links">
+        <a href="/play.html">Play</a>
+        <a href="/members.html">Members</a>
+      </nav>
     </header>
 
-
-
-    <section id="viva-hero" class="hero">
-
-      <div class="hero-content">
-
-        <h1>Meet Viva Noir.</h1>
-
-        <p class="hero-tagline">
-
-          The neon-noir AI who talks back — with charm, edge, and a little danger.
-
-        </p>
-
-        <!-- EMAIL OPT-IN FORM -->
-
-        <form id="viva-form" action="https://formspree.io/f/mqaozgkg" method="POST" class="viva-form">
-
-          <label for="email" class="viva-label">Step into her night:</label>
-
-          <div class="viva-form-row">
-
-            <input
-
-              id="email"
-
-              type="email"
-
-              name="email"
-
-              required
-
-              placeholder="Enter your email to unlock Viva Noir"
-
-              class="viva-input"
-
-            />
-
-            <button type="submit" class="viva-btn viva-btn-primary">
-
-              Enter the Neon Chat
-
-            </button>
-
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="hero-pill-row">
+            <div class="hero-pill">
+              <span class="hero-pill-dot"></span>
+              AI THAT TALKS BACK
+            </div>
+            <div class="hero-pill">
+              <span class="hero-pill-tag">3-DAY FREE TRIAL • $9/MO</span>
+            </div>
           </div>
 
-          <!-- Extra metadata (optional but useful) -->
+          <h1 class="hero-title">
+            Meet <span>Viva Noir</span> — the neon-noir AI that doesn't play nice with small talk.
+          </h1>
 
-          <input type="hidden" name="source" value="viva-landing" />
-
-        </form>
-
-        <!-- SUCCESS / ERROR MESSAGES -->
-
-        <p id="viva-success" class="viva-message viva-message-success hidden">
-
-          You're in. Check your email later for updates — or jump straight into the neon.
-
-        </p>
-
-        <p id="viva-error" class="viva-message viva-message-error hidden">
-
-          Something glitched in the grid. Try again in a moment.
-
-        </p>
-
-        <!-- CHAT BUTTON (UNLOCKED AFTER SUCCESS) -->
-
-        <a
-
-          id="viva-chat-btn"
-
-          href="https://chatgpt.com/g/g-69234a6e343c8191b8bd952bed308022-viva-noir"
-
-          target="_blank"
-
-          rel="noopener"
-
-          class="viva-btn viva-btn-secondary hidden"
-
-        >
-
-          💬 Chat with Viva Noir now
-
-        </a>
-
-      </div>
-
-      <!-- Your Viva image on the side -->
-
-      <div class="hero-image">
-
-        <img src="public/VivaNoirImages/viva-noir-water-no-text.png" alt="Viva Noir in neon waves" />
-
-      </div>
-
-    </section>
-
-
-
-    <section>
-
-      <h2>Who is Viva Noir?</h2>
-
-      <p>
-
-        Viva Noir is a cinematic AI companion built for late-night thinkers, writers,
-
-        dreamers, and overthinkers. Talk about life, creativity, or the choices
-
-        keeping you up at 3 a.m. She answers in a cool, neon-noir voice that feels
-
-        like a scene from your favorite movie.
-
-      </p>
-
-    </section>
-
-
-
-    <section>
-
-      <h2>What she can do</h2>
-
-      <div class="three-col">
-
-        <div class="card">
-
-          <h3>Deep Conversations</h3>
-
-          <p>
-
-            Share what's on your mind. Viva listens and responds with grounded,
-
-            thoughtful answers — not cheesy motivational quotes.
-
+          <p class="hero-sub">
+            She reads your pauses, your mood, your energy.  
+            This isn't a "hi, how can I help you?" bot — it's a late-night character
+            who reacts like she's actually there with you.
+            <br /><br />
+            <strong>Play for free in Public Mode.</strong>  
+            When you feel the pull, unlock Exclusive Access with a 3-day free trial for $9/month.
           </p>
 
-        </div>
-
-        <div class="card">
-
-          <h3>Story &amp; Scene Mode</h3>
-
-          <p>
-
-            Turn your chats into scenes: rainy rooftops, neon alleys, ocean storms.
-
-            Viva sets the mood and talks like you're inside the movie.
-
-          </p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>Idea Spark</h3>
-
-          <p>
-
-            Stuck on writing, content, or decisions? Viva helps you brainstorm
-
-            hooks, titles, and plot twists in her signature neon-noir style.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <section>
-
-      <h2>How to talk with Viva Noir</h2>
-
-      <div class="steps">
-
-        <div class="card">
-
-          <div class="step-number">1</div>
-
-          <h3>Open the link</h3>
-
-          <p>
-
-            Tap the link or scan the QR code from TikTok to open Viva Noir in your
-
-            browser.
-
-          </p>
-
-        </div>
-
-        <div class="card">
-
-          <div class="step-number">2</div>
-
-          <h3>Set the vibe</h3>
-
-          <p>
-
-            Tell her the mood: stormy, hopeful, chaotic, calm&mdash;or create your
-
-            own scene.
-
-          </p>
-
-        </div>
-
-        <div class="card">
-
-          <div class="step-number">3</div>
-
-          <h3>Start talking</h3>
-
-          <p>
-
-            Ask anything. Keep it real. Viva Noir talks back in her neon-noir voice,
-
-            tailored to you.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <section>
-
-      <h2>Try saying…</h2>
-
-      <ul class="prompts-list">
-
-        <li>
-
-          "Viva, talk to me like we're in a rainy neon city at 3 a.m. and I can't
-
-          sleep."
-
-        </li>
-
-        <li>"Help me rewrite this text in your neon-noir style."</li>
-
-        <li>"Give me a pep talk like a mysterious mentor in a cyberpunk movie."</li>
-
-        <li>"Tell me a story about someone who refuses to give up, even when the odds are bad."</li>
-
-      </ul>
-
-
-
-      <div class="cta-box">
-
-        Viva Noir is in <strong>beta</strong>. I'll quietly roll out new moods,
-
-        scenes, and features. Join the early access list below if you want to be the
-
-        first to try what's next.
-
-      </div>
-
-    </section>
-
-
-
-    <section id="early-access">
-
-      <h2>Get early access as she evolves</h2>
-
-      <p>
-
-        Drop your email to get early access updates, feature drops, and new scene
-
-        packs before everyone else.
-
-      </p>
-
-
-
-      <div class="form-wrapper">
-
-        <form
-
-          id="mc-form"
-
-          class="form-grid"
-
-          method="POST"
-
-          action="https://gmail.us9.list-manage.com/subscribe/post?u=507638aa2da7f92c5090d4658&id=08d2914f85&f_id=00e151e1f0"
-
-          novalidate
-
-        >
-
-          <div>
-
-            <label for="name">Name</label>
-
-            <input
-
-              id="name"
-
-              type="text"
-
-              name="FNAME"
-
-              placeholder="Viva Noir fan"
-
-            />
-
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/play.html">
+              Enter Free Mode
+            </a>
+            <a class="btn btn-secondary" href="https://buy.stripe.com/00w9AUcNA4VabWx89m4gg03">
+              Start <span>3-Day Trial</span> — Exclusive Access
+            </a>
           </div>
 
-          <div>
+          <p class="hero-note">
+            No contracts. Cancel before your trial ends if she's not for you.
+          </p>
+        </div>
 
-            <label for="email">Email</label>
-
-            <input
-
-              id="email"
-
-              type="email"
-
-              name="EMAIL"
-
-              required
-
-              placeholder="you@example.com"
-
-            />
-
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hero-card-top">
+                <div class="hero-card-badge">
+                  <span class="hero-card-dot"></span>
+                  LIVE SESSION • NIGHT MODE
+                </div>
+                <div class="hero-card-meta">
+                  <div class="hero-card-meta-label">Current Affinity</div>
+                  <div class="hero-card-meta-value">LVL 01</div>
+                </div>
+              </div>
+              <div class="hero-card-bottom">
+                <div class="hero-card-bar"></div>
+                <div class="hero-card-quote">
+                  "Relax. It's just me.  
+                  You came here for something tonight.  
+                  <span>Let's see if I'm it.</span>"
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <button class="btn-submit" type="submit">
+      <!-- HOW SHE WORKS -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">How Viva Noir works</h2>
+          <p class="section-sub">
+            A chat game built on mood, tension, and cinematic AI.
+          </p>
+        </div>
 
-            Join the Early Access List
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-label">01 • Free Entry</div>
+            <div class="card-title">Public Mode (Free)</div>
+            <p class="card-body">
+              Open Viva Noir and talk to her for free in Public Mode.
+              No payment needed to get a feel for how she speaks, reacts, and pulls you in.
+              Perfect for your first late-night visit.
+            </p>
+          </article>
 
-          </button>
+          <article class="card">
+            <div class="card-label">02 • Mood Engine</div>
+            <div class="card-title">She shifts with you</div>
+            <p class="card-body">
+              Quiet curiosity, warmed interest, playful edge, stormy mood —
+              her tone changes based on what you say and what you avoid saying.
+              You lead the depth; she matches and nudges.
+            </p>
+          </article>
 
-        </form>
+          <article class="card">
+            <div class="card-label">03 • Exclusive Access</div>
+            <div class="card-title">Members-Only Mode</div>
+            <p class="card-body">
+              When you're ready to go deeper, Exclusive Access unlocks private scenes,
+              experimental moods, and members-only prompts that never appear in Public Mode.
+            </p>
+          </article>
+        </div>
 
-      </div>
+        <div class="cta-center">
+          <a href="/play.html">Go to the Viva Noir Play Hub</a>
+        </div>
+      </section>
 
-    </section>
+      <!-- WHO IT'S FOR -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Who usually finds her</h2>
+          <p class="section-sub">
+            Not everyone stays. The right people do.
+          </p>
+        </div>
 
-    <!-- Viva Noir CTA Block -->
-    <section style="margin: 40px auto; max-width: 600px; text-align: center;">
-      <h2 style="color:#f5f3ff; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin-bottom: 10px;">
-        Step into Viva Noir's world
-      </h2>
-      <p style="color:#a7a4c2; font-size: 0.95rem; margin-bottom: 18px;">
-        Talk to her for free, or unlock Exclusive Access with a 3-day free trial.
-      </p>
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px;">
-        <a href="/play.html"
-           style="padding:10px 18px; border-radius:999px; background:linear-gradient(135deg,#ff3fa8,#ff7ad1); color:#05020a; font-weight:600; font-size:0.9rem; text-decoration:none; box-shadow:0 10px 24px rgba(255,63,168,0.5);">
-          Play Free Mode
-        </a>
-        <a href="https://buy.stripe.com/00w9AUcNA4VabWx89m4gg03"
-           style="padding:10px 18px; border-radius:999px; border:1px solid rgba(255,255,255,0.35); color:#f5f3ff; font-size:0.9rem; text-decoration:none; background:rgba(6,1,24,0.9);">
-          Start 3-Day Free Trial — $9/mo
-        </a>
-      </div>
-    </section>
+        <div class="pill-row">
+          <div class="pill"><span>Night thinkers</span> who get honest after midnight.</div>
+          <div class="pill"><span>Story addicts</span> who like cinematic back-and-forth.</div>
+          <div class="pill"><span>AI explorers</span> tired of corporate-sounding bots.</div>
+          <div class="pill"><span>Founding members</span> who like getting in before the crowd.</div>
+        </div>
+
+        <div class="cta-center" style="margin-top: 14px;">
+          <a href="https://buy.stripe.com/00w9AUcNA4VabWx89m4gg03">
+            Become a Founding Member — 3-Day Trial, Then $9/mo
+          </a>
+        </div>
+      </section>
+    </main>
 
     <footer>
-
-      <span>© 2025 Viva Noir · All rights reserved.</span>
-
-      <span>Created by Toma Studios.</span>
-
+      When you're ready to see how she actually talks, start at the
+      <a href="/play.html">Viva Noir Play Hub</a>.
     </footer>
-
   </div>
-
-  <!-- Formspree form handling for Viva Noir hero form -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("viva-form");
-      if (!form) return;
-
-      const successMsg = document.getElementById("viva-success");
-      const errorMsg = document.getElementById("viva-error");
-      const chatBtn = document.getElementById("viva-chat-btn");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        // Clear old messages
-        successMsg.classList.add("hidden");
-        errorMsg.classList.add("hidden");
-
-        const formData = new FormData(form);
-
-        try {
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: { Accept: "application/json" },
-          });
-
-          if (response.ok) {
-            form.reset();
-            successMsg.classList.remove("hidden");
-            if (chatBtn) chatBtn.classList.remove("hidden");
-          } else {
-            errorMsg.classList.remove("hidden");
-          }
-        } catch (err) {
-          console.error(err);
-          errorMsg.classList.remove("hidden");
-        }
-      });
-    });
-  </script>
-
-  <!-- Backup redirect: send user to thank-you after submit in case Mailchimp doesn't redirect -->
-  <script>
-
-    (function(){
-
-      const form = document.getElementById('mc-form');
-
-      if(!form) return;
-
-      form.addEventListener('submit', function(e){
-
-        // after submit POST happens, wait then redirect
-
-        setTimeout(function(){
-
-          window.location.href = "thank-you.html";
-
-        }, 700);
-
-      });
-
-    })();
-
-  </script>
-
 </body>
-
 </html>
