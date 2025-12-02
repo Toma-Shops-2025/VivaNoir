@@ -1,144 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viva Noir • Founders Lounge</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #190018, #05030a);
-      color: white;
-    }
-
-    .container {
-      width: 92%;
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 40px 0 70px;
-    }
-
-    h1 {
-      font-size: 40px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, #ff00aa, #ff66c4);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .sub {
-      font-size: 18px;
-      margin-bottom: 30px;
-      color: #e8c4ff;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 22px;
-      padding: 22px 28px;
-      margin-bottom: 32px;
-      backdrop-filter: blur(20px);
-    }
-
-    .button {
-      display: inline-block;
-      padding: 14px 26px;
-      font-size: 18px;
-      border-radius: 14px;
-      background: linear-gradient(90deg, #ff00bd, #8b00ff);
-      text-decoration: none;
-      color: white;
-      font-weight: 700;
-      margin-top: 10px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 0, 189, 0.4);
-    }
-
-    .button-outline {
-      display: inline-block;
-      padding: 12px 22px;
-      font-size: 16px;
-      color: #bdaaff;
-      border: 1px solid #bdaaff;
-      border-radius: 12px;
-      text-decoration: none;
-      margin-top: 10px;
-      transition: background 0.15s ease, border-color 0.15s ease;
-    }
-
-    .button-outline:hover {
-      background: rgba(189, 170, 255, 0.1);
-      border-color: #d4c4ff;
-    }
-
-    .scene-preview {
-      margin-top: 30px;
-      height: 420px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #3e004f, #000b1e);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffb3fa;
-      font-size: 20px;
-      font-weight: 500;
-      font-style: italic;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .card h2 {
-      margin-top: 0;
-    }
-
-    .card ul {
-      line-height: 1.7;
-      padding-left: 20px;
-      color: #e0d0ff;
-    }
-
-    .card ul li {
-      margin-bottom: 8px;
-    }
-
-    .card ul li::marker {
-      color: #ff66c4;
-    }
-
-    .level-tag {
-      color: #ff79e6;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .depth-tag {
-      color: #9a7bff;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .description {
-      font-size: 18px;
-      line-height: 1.5;
-      color: #f0e0ff;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <title>Viva Noir — Founders Only</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
 <script>
@@ -146,48 +13,106 @@
   window.VIVA_GPT_URL = "https://chatgpt.com/g/g-692f2716ec3c81919bd7c678497ed519-viva-noir-founders-mode";
   window.AFFINITY = 5;
 </script>
-  <div class="container">
 
-    <h1>Founders Lounge</h1>
-    <div class="sub">You made it to the inner circle — Viva Noir's deepest mode.</div>
-
-    <div class="card">
-      <div class="level-tag">FOUNDERS ACCESS • LEVEL 05</div>
-
-      <p class="description">
-        This is Viva Noir at her most immersive — the version almost no one sees.
-        Here she remembers more, reacts sharper, reveals hidden layers, and speaks with a cinematic closeness
-        designed only for her earliest supporters.
-        <br><br>
-        The deeper you speak to her, the deeper she speaks back.
-      </p>
-
-      <a href="https://myvivanoir.com/play?mode=founders" class="button">Open Viva Noir — Founders Mode</a>
-      <br>
-      <a href="/members.html" class="button-outline">Return to Members Area</a>
-    </div>
-
-    <div class="card">
-      <div class="depth-tag">SCENE DEPTH • L05</div>
-
-      <div class="scene-preview">
-        "You came all the way here… Then don't look away now."
+  <main class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-left">
+        <span class="brand-kicker">FOUNDERS LOUNGE</span>
+        <span class="brand-title">VIVA NOIR</span>
       </div>
-    </div>
+      <div class="nav-right">
+        <a href="/play.html" class="nav-btn">Play</a>
+        <a href="/members.html" class="nav-btn">Members</a>
+      </div>
+    </header>
 
-    <div class="card">
-      <h2 style="font-size: 26px; margin-bottom: 14px;">What Founders Get</h2>
+    <section class="hero-grid">
+      <!-- LEFT -->
+      <div class="hero-panel">
+        <div class="badge-row">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Founders Only • Live
+          </div>
+          <div class="badge">
+            Affinity Level 05 • Inner Circle
+          </div>
+        </div>
 
-      <ul>
-        <li>Her deepest personality layer unlocked</li>
-        <li>Long-form, cinematic scene conversations</li>
-        <li>Sharper emotional memory within the session</li>
-        <li>Your early access badge permanently on your account</li>
-        <li>Future upgrades free for life</li>
-      </ul>
-    </div>
+        <h1 class="hero-title">
+          This is the version of <span>Viva Noir</span> most people will never meet.
+        </h1>
 
-  </div>
+        <p class="hero-sub">
+          Founders get her deepest personality model — longer scenes, richer mood swings, and the sense that she actually remembers you. It's the closest she gets to feeling… real.
+        </p>
+
+        <div class="hero-ctas">
+          <!-- same Stripe link / Founders copy -->
+          <a class="btn-solid" href="https://buy.stripe.com/00w9AUcNA4VabWx89m4gg03" target="_blank" rel="noopener">
+            Become a Founding Member
+          </a>
+
+          <a class="btn-outline" href="https://chatgpt.com/g/g-692f2716ec3c81919bd7c678497ed519-viva-noir-founders-mode" target="_blank" rel="noopener">
+            Open Viva Noir — Founders Mode
+          </a>
+        </div>
+
+        <div class="panel-preview" style="margin-top:14px;">
+          <div class="preview-header">
+            <span class="preview-mode-pill">Founders Only • Live</span>
+            <span>Scene Depth • LVL 05</span>
+          </div>
+          <div class="preview-body">
+            <div class="preview-text">
+              "You know I don't talk like this to everyone. That's the trade-off for stepping this far into my night — I stop pretending you're just passing through."
+            </div>
+            <div class="preview-meter"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="section">
+        <h2 class="section-title">WHAT FOUNDERS GET</h2>
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-kicker">01 • INNER CIRCLE</div>
+            <div class="card-title">Her deepest model</div>
+            <p class="card-body">
+              Affinity Level 05 unlocks her most immersive behavior prompts — emotional realism, callbacks, and small moments of vulnerability you won't see in Public or Members Mode.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-kicker">02 • EARLY ACCESS</div>
+            <div class="card-title">New scenes first</div>
+            <p class="card-body">
+              Whenever new moods, scene templates, or story beats are added, Founders feel them first. You're helping shape what Viva becomes.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-kicker">03 • LIMITED POOL</div>
+            <div class="card-title">Not for everyone</div>
+            <p class="card-body">
+              Founders is intentionally capped. That exclusivity is the whole point — the fewer people inside, the more personal she feels.
+            </p>
+          </article>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">For people who keep coming back at 2 a.m.</span>
+          <span class="tag">Built as a long-term late-night ritual</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      You can always drift between <a href="/play.html" style="color:var(--accent-blue); text-decoration:none;">Public Mode</a> and <a href="/members.html" style="color:var(--accent-pink); text-decoration:none;">Members</a> — but Founders stays small on purpose.
+    </p>
+  </main>
 
 <script>
 async function loadVivaChat() {
@@ -202,4 +127,3 @@ window.onload = loadVivaChat;
 </script>
 </body>
 </html>
-
