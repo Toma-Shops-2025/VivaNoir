@@ -140,6 +140,12 @@
 </head>
 
 <body>
+
+<script>
+  window.VIVA_MODE = "founders";
+  window.VIVA_GPT_URL = "https://chatgpt.com/g/g-692f2716ec3c81919bd7c678497ed519-viva-noir-founders-mode";
+  window.AFFINITY = 5;
+</script>
   <div class="container">
 
     <h1>Founders Lounge</h1>
@@ -182,6 +188,18 @@
     </div>
 
   </div>
+
+<script>
+async function loadVivaChat() {
+  const frame = document.getElementById("viva-frame");
+  if (!frame) return;
+
+  const gptURL = window.VIVA_GPT_URL;
+
+  frame.src = gptURL;
+}
+window.onload = loadVivaChat;
+</script>
 </body>
 </html>
 

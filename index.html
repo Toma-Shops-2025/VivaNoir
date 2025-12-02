@@ -533,6 +533,12 @@
   </style>
 </head>
 <body>
+
+<script>
+  window.VIVA_MODE = "public";
+  window.VIVA_GPT_URL = "https://chatgpt.com/g/g-692f2f577ddc819190f3166b4929ca0d-viva-noir-public-mode";
+  window.AFFINITY = 1;
+</script>
   <div class="overlay-noise"></div>
   <div class="shell">
     <header>
@@ -674,5 +680,17 @@
       <a href="/play.html">Viva Noir Play Hub</a>.
     </footer>
   </div>
+
+<script>
+async function loadVivaChat() {
+  const frame = document.getElementById("viva-frame");
+  if (!frame) return;
+
+  const gptURL = window.VIVA_GPT_URL;
+
+  frame.src = gptURL;
+}
+window.onload = loadVivaChat;
+</script>
 </body>
 </html>

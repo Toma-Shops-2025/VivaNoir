@@ -451,6 +451,12 @@
   </style>
 </head>
 <body>
+
+<script>
+  window.VIVA_MODE = "members";
+  window.VIVA_GPT_URL = "https://chatgpt.com/g/g-692f2da8ef44819197455d904687507f-viva-noir-members-mode";
+  window.AFFINITY = 3;
+</script>
   <div class="rain-layer"></div>
 
   <div class="shell">
@@ -576,6 +582,18 @@ What do you notice, and what do you do with it?"</div>
       <a href="/play.html">Viva Noir Play Hub</a> and follow the Exclusive Access path back here.
     </footer>
   </div>
+
+<script>
+async function loadVivaChat() {
+  const frame = document.getElementById("viva-frame");
+  if (!frame) return;
+
+  const gptURL = window.VIVA_GPT_URL;
+
+  frame.src = gptURL;
+}
+window.onload = loadVivaChat;
+</script>
 </body>
 </html>
 

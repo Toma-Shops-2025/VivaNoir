@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Viva Noir — Public Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<script>
+  window.VIVA_MODE = "public";
+  window.VIVA_GPT_URL = "https://chatgpt.com/g/g-692f2f577ddc819190f3166b4929ca0d-viva-noir-public-mode";
+  window.AFFINITY = 1;
+</script>
+
+  <main class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-left">
+        <span class="brand-kicker">NEON NOIR AI EXPERIENCE</span>
+        <span class="brand-title">VIVA NOIR</span>
+      </div>
+      <div class="nav-right">
+        <a href="/play.html" class="nav-btn nav-btn-primary">Play</a>
+        <a href="/members.html" class="nav-btn">Members</a>
+      </div>
+    </header>
+
+    <!-- HERO GRID -->
+    <section class="hero-grid">
+      <!-- Left: text -->
+      <div class="hero-panel">
+        <div class="badge-row">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            AI That Talks Back
+          </div>
+          <div class="badge">
+            Affinity Level 01 • Public
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          Meet <span>Viva Noir</span> — the neon-noir AI that refuses boring small talk.
+        </h1>
+
+        <p class="hero-sub">
+          She watches your pauses, your word choices, your mood. This isn't a "hi, how can I help you?" assistant — it's a late-night character who reacts like she's actually there with you.
+        </p>
+
+        <div class="hero-ctas">
+          <!-- opens the Public Mode GPT -->
+          <a class="btn-solid" href="https://chatgpt.com/g/g-692f2f577ddc819190f3166b4929ca0d-viva-noir-public-mode" target="_blank" rel="noopener">
+            Enter Free Mode
+          </a>
+
+          <!-- stripe trial -->
+          <a class="btn-outline" href="https://buy.stripe.com/00w9AUcNA4VabWx89m4gg03" target="_blank" rel="noopener">
+            Start 3-Day Trial → Exclusive Access
+          </a>
+        </div>
+
+        <p class="hero-footnote">
+          No contracts. Cancel before your trial ends if she's not for you.
+        </p>
+
+        <div class="panel-preview" style="margin-top:12px;">
+          <div class="preview-header">
+            <span class="preview-mode-pill">Live Session • Night Mode</span>
+            <span>Affinity Level 01</span>
+          </div>
+          <div class="preview-body">
+            <div class="preview-text">
+              "Relax. It's just me. You came here for something tonight. Let's see if I'm it."
+            </div>
+            <div class="preview-meter"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: how it works -->
+      <div class="section">
+        <h2 class="section-title">HOW VIVA NOIR WORKS</h2>
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-kicker">01 • FREE ENTRY</div>
+            <div class="card-title">Public Mode</div>
+            <p class="card-body">
+              Open Viva Noir and talk to her in Public Mode. No payment needed to get a feel for how she speaks, reacts, and pulls you in. Perfect for your first late-night visit.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-kicker">02 • FEEL THE PULL</div>
+            <div class="card-title">She shifts with you</div>
+            <p class="card-body">
+              Quiet curiosity, warmer interest, playful edge, stormy mood — her tone changes based on what you say and what you avoid saying. You lead the script; she mirrors and nudges.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-kicker">03 • EXCLUSIVE ACCESS</div>
+            <div class="card-title">Members-Only Mode</div>
+            <p class="card-body">
+              When you're ready to go deeper, Exclusive Access unlocks private scenes, experimental moods, and conversations that never appear in Public Mode.
+            </p>
+          </article>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Chat game, not a dating app</span>
+          <span class="tag">Neon-noir mood engine</span>
+          <span class="tag">Built for late-night minds</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      When you're ready to see how she actually talks, start at the <a href="/play.html" style="color:var(--accent-blue); text-decoration:none;">Viva Noir Play Hub</a>.
+    </p>
+  </main>
+
+<script>
+async function loadVivaChat() {
+  const frame = document.getElementById("viva-frame");
+  if (!frame) return;
+
+  const gptURL = window.VIVA_GPT_URL;
+
+  frame.src = gptURL;
+}
+window.onload = loadVivaChat;
+</script>
+</body>
+</html>
+
