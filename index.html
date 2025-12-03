@@ -69,7 +69,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.3;
+      opacity: 0.45;
       z-index: -1;
       pointer-events: none;
     }
@@ -166,13 +166,13 @@
     /* HERO */
     .hero {
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       background:
-        radial-gradient(circle at top left, rgba(255, 63, 168, 0.2), transparent 55%),
-        radial-gradient(circle at top right, rgba(52, 214, 255, 0.15), transparent 55%),
-        rgba(4, 0, 22, 0.55);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+        radial-gradient(circle at top left, rgba(255, 63, 168, 0.15), transparent 55%),
+        radial-gradient(circle at top right, rgba(52, 214, 255, 0.1), transparent 55%),
+        rgba(4, 0, 22, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       padding: 22px 18px 18px;
       box-shadow: var(--shadow-strong);
       display: grid;
@@ -348,11 +348,11 @@
       border-radius: 26px;
       overflow: hidden;
       background:
-        radial-gradient(circle at 15% 0%, rgba(255, 63, 168, 0.35), transparent 55%),
-        radial-gradient(circle at 85% 100%, rgba(52, 214, 255, 0.3), transparent 55%),
-        rgba(5, 0, 20, 0.45);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+        radial-gradient(circle at 15% 0%, rgba(255, 63, 168, 0.2), transparent 55%),
+        radial-gradient(circle at 85% 100%, rgba(52, 214, 255, 0.15), transparent 55%),
+        rgba(5, 0, 20, 0.2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.3);
       box-shadow: 0 26px 60px rgba(0, 0, 0, 0.95);
       transform: translateY(0);
@@ -434,10 +434,10 @@
     /* SECTION GENERIC */
     .section {
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(5, 0, 22, 0.5);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(5, 0, 22, 0.25);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       padding: 16px 15px 14px;
       box-shadow: var(--shadow-strong);
     }
@@ -476,12 +476,12 @@
     }
     .card {
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       background:
-        radial-gradient(circle at top, rgba(255, 63, 168, 0.1), transparent 55%),
-        rgba(8, 0, 30, 0.45);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+        radial-gradient(circle at top, rgba(255, 63, 168, 0.08), transparent 55%),
+        rgba(8, 0, 30, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 10px 10px 9px;
       font-size: 0.8rem;
       display: flex;
@@ -513,10 +513,10 @@
     .pill {
       padding: 4px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(9, 1, 32, 0.45);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(9, 1, 32, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       font-size: 0.74rem;
       color: var(--text-muted);
     }
@@ -536,9 +536,9 @@
       padding: 9px 18px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.35);
-      background: rgba(8, 0, 30, 0.5);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(8, 0, 30, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       font-size: 0.86rem;
       color: var(--text-main);
       transition: transform var(--transition-fast), box-shadow var(--transition-fast),
