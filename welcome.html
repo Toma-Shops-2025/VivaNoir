@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're In — Viva Noir Members</title>
+
+  <link rel="icon" type="image/x-icon" href="/Untitled design.ico" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Montserrat", sans-serif;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 10vh;
+    }
+
+    h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      text-shadow: 0 0 15px #ff00e6;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: block;
+      width: 90%;
+      max-width: 350px;
+      margin: 12px auto;
+      padding: 16px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      background: #00ffff;
+      text-align: center;
+      box-shadow: 0 0 15px #00ffffaa;
+    }
+
+    .btn.members {
+      background: #ff00e6;
+      color: white;
+      box-shadow: 0 0 20px #ff00e6cc;
+    }
+
+    .btn.founders {
+      background: #0030ff;
+      color: white;
+      box-shadow: 0 0 20px #0030ffcc;
+    }
+
+    .note {
+      margin-top: 30px;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="/public/background-video-members.mp4" type="video/mp4">
+  </video>
+
+  <div class="container">
+    <h1>Welcome In.</h1>
+
+    <p>
+      Your membership is active.<br>
+      Viva Noir is waiting for you inside.<br><br>
+      Choose where you want to meet her:
+    </p>
+
+    <a class="btn" href="/play.html">Play Mode (Free Vibes)</a>
+
+    <a class="btn members" href="/members.html">Members Mode (Unlocked)</a>
+
+    <a class="btn founders" href="/founders-lounge.html">Founders Mode (Invite-Only)</a>
+
+    <p class="note">
+      Want access to the Founders Lounge? 
+      It opens soon, and active Members get first priority.
+    </p>
+  </div>
+
+</body>
+</html>
+
